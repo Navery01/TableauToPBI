@@ -1,0 +1,631 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20252.25.0609.1419                               -->
+<workbook original-version='18.1' source-build='2025.2.0 (20252.25.0514.2217)' source-platform='win' version='18.1' xml:base='https://localhost' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/helloworld_17505652883720?rev=1.0' id='helloworld_17505652883720' path='/workbooks' revision='1.0' />
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='data (sample-data-10mins)' inline='true' name='federated.1jhd570086bse21ftp9490gv21wm' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='sample-data-10mins' name='excel-direct.1rvub3u173kuos18g92i50tg6bl1'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' interpretationMode='0' validate='no' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <relation connection='excel-direct.1rvub3u173kuos18g92i50tg6bl1' name='data' table='[data$]' type='table'>
+          <columns gridOrigin='A1:F1095:no:A1:F1095:0' header='yes' outcome='2'>
+            <column datatype='string' name='Sales Person' ordinal='0' />
+            <column datatype='string' name='Country' ordinal='1' />
+            <column datatype='string' name='Product' ordinal='2' />
+            <column datatype='date' name='Date' ordinal='3' />
+            <column datatype='integer' name='Amount' ordinal='4' />
+            <column datatype='integer' name='Boxes Shipped' ordinal='5' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[data]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:F1095:no:A1:F1095:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>2</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sales Person</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Sales Person]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Sales Person</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Product</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Product]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Product</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RIN_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Amount</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Amount]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Amount</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Boxes Shipped</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Boxes Shipped]</local-name>
+            <parent-name>[data]</parent-name>
+            <remote-alias>Boxes Shipped</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='data' datatype='table' name='[__tableau_internal_object_id__].[data_9600CB0E845E447B959437232EAE4E37]' role='measure' type='quantitative' />
+      <group caption='Action (Country)' hidden='true' name='[Action (Country)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Country]' />
+        </groupfilter>
+      </group>
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='Data/TableauTemp/#TableauTemp_0a69a0e09daazz13n86ry0zuxojy.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='06/22/2025 03:37:02 AM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>Sales Person</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Sales Person]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Sales Person</remote-alias>
+              <ordinal>0</ordinal>
+              <family>data</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>25</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Country</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Country]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Country</remote-alias>
+              <ordinal>1</ordinal>
+              <family>data</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Product</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Product]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Product</remote-alias>
+              <ordinal>2</ordinal>
+              <family>data</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>22</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='1' name='LEN_RIN_S2' />
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Date</remote-name>
+              <remote-type>133</remote-type>
+              <local-name>[Date]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Date</remote-alias>
+              <ordinal>3</ordinal>
+              <family>data</family>
+              <local-type>date</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>167</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Amount</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Amount]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Amount</remote-alias>
+              <ordinal>4</ordinal>
+              <family>data</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>813</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Boxes Shipped</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[Boxes Shipped]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Boxes Shipped</remote-alias>
+              <ordinal>5</ordinal>
+              <family>data</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>381</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[data_9600CB0E845E447B959437232EAE4E37]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='data' id='data_9600CB0E845E447B959437232EAE4E37'>
+            <properties context=''>
+              <relation connection='excel-direct.1rvub3u173kuos18g92i50tg6bl1' name='data' table='[data$]' type='table'>
+                <columns gridOrigin='A1:F1095:no:A1:F1095:0' header='yes' outcome='2'>
+                  <column datatype='string' name='Sales Person' ordinal='0' />
+                  <column datatype='string' name='Country' ordinal='1' />
+                  <column datatype='string' name='Product' ordinal='2' />
+                  <column datatype='date' name='Date' ordinal='3' />
+                  <column datatype='integer' name='Amount' ordinal='4' />
+                  <column datatype='integer' name='Boxes Shipped' ordinal='5' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <actions>
+    <action caption='Filter1' name='[Action1_95B9F722F9D74BE6BF434808448FC5B3]'>
+      <activation type='on-select' />
+      <source dashboard='DBProduct' type='sheet' />
+      <link caption='Filter1' delimiter=',' escape='\' expression='tsl:DBProduct?%5Bfederated.1jhd570086bse21ftp9490gv21wm%5D.%5BCountry%5D~s0=&lt;[federated.1jhd570086bse21ftp9490gv21wm].[Country]~na&gt;' include-null='true' multi-select='true' url-escape='true' />
+      <command command='tsc:tsl-filter'>
+        <param name='target' value='DBProduct' />
+      </command>
+    </action>
+    <datasources>
+      <datasource caption='data (sample-data-10mins)' name='federated.1jhd570086bse21ftp9490gv21wm' />
+    </datasources>
+    <datasource-dependencies datasource='federated.1jhd570086bse21ftp9490gv21wm'>
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+    </datasource-dependencies>
+  </actions>
+  <worksheets>
+    <worksheet name='CountryVsAmount'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/helloworld_17505652883720/CountryVsAmount?rev=' id='118234415' path='/workbooks/helloworld_17505652883720' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='data (sample-data-10mins)' name='federated.1jhd570086bse21ftp9490gv21wm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1jhd570086bse21ftp9490gv21wm'>
+            <column datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column-instance column='[Country]' derivation='None' name='[none:Country:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</rows>
+        <cols>[federated.1jhd570086bse21ftp9490gv21wm].[none:Country:nk]</cols>
+      </table>
+      <simple-id uuid='{D34521A5-01D0-4607-AC35-CFEAD42DD0F1}' />
+    </worksheet>
+    <worksheet name='ProductVsAmout'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/helloworld_17505652883720/ProductVsAmout?rev=' id='118234413' path='/workbooks/helloworld_17505652883720' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='data (sample-data-10mins)' name='federated.1jhd570086bse21ftp9490gv21wm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1jhd570086bse21ftp9490gv21wm'>
+            <column datatype='integer' name='[Amount]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Product]' role='dimension' type='nominal' />
+            <column-instance column='[Product]' derivation='None' name='[none:Product:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Amount]' derivation='Sum' name='[sum:Amount:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1jhd570086bse21ftp9490gv21wm].[Action (Country)]'>
+            <groupfilter function='member' level='[Country]' member='&quot;New Zealand&quot;' user:ui-action-filter='[Action1_95B9F722F9D74BE6BF434808448FC5B3]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1jhd570086bse21ftp9490gv21wm].[Action (Country)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</rows>
+        <cols>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</cols>
+      </table>
+      <simple-id uuid='{6BE5DE12-7EB7-4E15-854D-0ABEE4BE318A}' />
+    </worksheet>
+    <worksheet name='ProductVsBoxesShipped'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/helloworld_17505652883720/ProductVsBoxesShipped?rev=' id='118234414' path='/workbooks/helloworld_17505652883720' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='data (sample-data-10mins)' name='federated.1jhd570086bse21ftp9490gv21wm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1jhd570086bse21ftp9490gv21wm'>
+            <column datatype='integer' name='[Boxes Shipped]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='string' name='[Product]' role='dimension' type='nominal' />
+            <column-instance column='[Product]' derivation='None' name='[none:Product:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Boxes Shipped]' derivation='Sum' name='[sum:Boxes Shipped:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1jhd570086bse21ftp9490gv21wm].[Action (Country)]'>
+            <groupfilter function='member' level='[Country]' member='&quot;New Zealand&quot;' user:ui-action-filter='[Action1_95B9F722F9D74BE6BF434808448FC5B3]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1jhd570086bse21ftp9490gv21wm].[Action (Country)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Boxes Shipped:qk]</rows>
+        <cols>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</cols>
+      </table>
+      <simple-id uuid='{5BADD1B2-66BF-4B58-9CCC-C2FEAEFF175A}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='DBProduct'>
+      <repository-location derived-from='https://haproxy-traffic-splitter/workbooks/helloworld_17505652883720/DBProduct?rev=' id='118234416' path='/workbooks/helloworld_17505652883720' revision='' />
+      <style />
+      <size maxheight='860' maxwidth='650' minheight='560' minwidth='420' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98046' id='6' name='CountryVsAmount' w='97538' x='1231' y='977'>
+            <zone-style>
+              <format attr='border-color' value='#000000' />
+              <format attr='border-style' value='none' />
+              <format attr='border-width' value='0' />
+              <format attr='margin' value='4' />
+            </zone-style>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+        <zone h='48107' id='5' name='ProductVsBoxesShipped' w='141846' x='101385' y='122' />
+        <zone h='49817' id='3' name='ProductVsAmout' w='142154' x='101846' y='49084' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='900' minheight='900' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='8' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98046' id='7' param='vert' type-v2='layout-flow' w='97538' x='1231' y='977'>
+                <zone fixed-size='280' h='48107' id='5' is-fixed='true' name='ProductVsBoxesShipped' w='141846' x='101385' y='122'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='98046' id='6' is-fixed='true' name='CountryVsAmount' w='97538' x='1231' y='977'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='49817' id='3' is-fixed='true' name='ProductVsAmout' w='142154' x='101846' y='49084'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{A298192B-941A-48AD-B47D-41729DE9826B}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='44'>
+    <window class='worksheet' name='ProductVsAmout'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{27FEAD6C-3F2F-4329-917E-88689A5A7372}' />
+    </window>
+    <window class='worksheet' name='ProductVsBoxesShipped'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{2FEAF911-A367-4D7D-8359-43C9DEBF4140}' />
+    </window>
+    <window class='worksheet' name='CountryVsAmount'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Country:nk]</field>
+            <field>[federated.1jhd570086bse21ftp9490gv21wm].[yr:Date:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{970703EA-B50D-4AD7-AF6B-AFF1221B01B1}' />
+    </window>
+    <window class='dashboard' maximized='true' name='DBProduct'>
+      <viewpoints>
+        <viewpoint name='CountryVsAmount'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields>
+                      <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Country:nk]</field>
+                    </x-fields>
+                    <y-fields>
+                      <field>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</field>
+                    </y-fields>
+                  </pane-descriptor>
+                  <columns>
+                    <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Country:nk]</field>
+                    <field>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>&quot;New Zealand&quot;</value>
+                  <value>950418</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+        </viewpoint>
+        <viewpoint name='ProductVsAmout'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <tuple-selection>
+              <tuple-reference>
+                <tuple-descriptor>
+                  <pane-descriptor>
+                    <x-fields>
+                      <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</field>
+                    </x-fields>
+                    <y-fields>
+                      <field>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</field>
+                    </y-fields>
+                  </pane-descriptor>
+                  <columns>
+                    <field>[federated.1jhd570086bse21ftp9490gv21wm].[none:Product:nk]</field>
+                    <field>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Amount:qk]</field>
+                    <field>[federated.1jhd570086bse21ftp9490gv21wm].[sum:Boxes Shipped:qk]</field>
+                  </columns>
+                </tuple-descriptor>
+                <tuple>
+                  <value>&quot;Mint Chip Choco&quot;</value>
+                  <value>86709</value>
+                  <value>2537</value>
+                </tuple>
+              </tuple-reference>
+            </tuple-selection>
+          </selection-collection>
+        </viewpoint>
+        <viewpoint name='ProductVsBoxesShipped'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{8533987D-193D-421A-8FB2-06BC6D8D26A9}' />
+    </window>
+  </windows>
+</workbook>

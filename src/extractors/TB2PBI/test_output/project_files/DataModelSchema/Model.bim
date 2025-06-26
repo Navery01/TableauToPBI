@@ -1,0 +1,240 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "federated_1jhd570086bse21ftp9490gv21wm",
+        "columns": [
+          {
+            "name": "Sales_Person",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Sales_Person"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Product",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isHidden": false,
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Amount",
+            "dataType": "int64",
+            "isHidden": false,
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "Boxes_Shipped",
+            "dataType": "int64",
+            "isHidden": false,
+            "sourceColumn": "Boxes_Shipped"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "__tableau_internal_object_id___data_9600CB0E845E447B959437232EAE4E37",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "__tableau_internal_object_id___data_9600CB0E845E447B959437232EAE4E37",
+            "displayName": "data",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Sales_Person",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Sales_Person"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Product",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isHidden": false,
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "Amount",
+            "dataType": "int64",
+            "isHidden": false,
+            "sourceColumn": "Amount"
+          },
+          {
+            "name": "Boxes_Shipped",
+            "dataType": "int64",
+            "isHidden": false,
+            "sourceColumn": "Boxes_Shipped"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "federated_1jhd570086bse21ftp9490gv21wm_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "federated_1jhd570086bse21ftp9490gv21wm",
+        "columns": [
+          {
+            "name": "DefaultColumn",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DefaultColumn"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "federated_1jhd570086bse21ftp9490gv21wm_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "federated_1jhd570086bse21ftp9490gv21wm",
+        "columns": [
+          {
+            "name": "DefaultColumn",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DefaultColumn"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "federated_1jhd570086bse21ftp9490gv21wm_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "federated_1jhd570086bse21ftp9490gv21wm",
+        "columns": [
+          {
+            "name": "DefaultColumn",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DefaultColumn"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "federated_1jhd570086bse21ftp9490gv21wm_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "federated_1jhd570086bse21ftp9490gv21wm",
+        "columns": [
+          {
+            "name": "DefaultColumn",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DefaultColumn"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "federated_1jhd570086bse21ftp9490gv21wm_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":false,\"IgnoreInferredProperties\":false,\"IgnoreTimestamps\":false,\"SplitMultilineStrings\":false,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Shared Expressions\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Groups\",\"Translations\"]}"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"federated_1jhd570086bse21ftp9490gv21wm\", \"federated_1jhd570086bse21ftp9490gv21wm\", \"federated_1jhd570086bse21ftp9490gv21wm\", \"federated_1jhd570086bse21ftp9490gv21wm\", \"federated_1jhd570086bse21ftp9490gv21wm\"]"
+      }
+    ]
+  }
+}

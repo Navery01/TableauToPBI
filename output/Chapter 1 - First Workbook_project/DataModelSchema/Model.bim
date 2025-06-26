@@ -1,0 +1,655 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Sample___Superstore___English_(Extract)",
+        "columns": [
+          {
+            "name": "Bestellpriorit\u00e4t",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Bestellpriorit\u00e4t"
+          },
+          {
+            "name": "Categoria_do_produto",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Categoria_do_produto"
+          },
+          {
+            "name": "Categor\u00eda_de_producto",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Categor\u00eda_de_producto"
+          },
+          {
+            "name": "Cat\u00e9gorie_de_produit",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Cat\u00e9gorie_de_produit"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Contenedor_de_productos",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Contenedor_de_productos"
+          },
+          {
+            "name": "Continent",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Continent"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Country",
+            "displayName": "Country / Region"
+          },
+          {
+            "name": "Cust_%_rank_10",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Cust_%_rank_10"
+          },
+          {
+            "name": "Cust_%_rank_11",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Cust_%_rank_11",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Cust_%_rank_12",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Cust_%_rank_12",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Cust_%_rank_13",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Cust_%_rank_13",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Cust_%_rank",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Cust_%_rank",
+            "displayName": "Rank customer",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Customer_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Customer_ID"
+          },
+          {
+            "name": "Customer_LTV",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Customer_LTV",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Days_as_customer",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Days_as_customer",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Discount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Embalagem_do_produto",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Embalagem_do_produto"
+          },
+          {
+            "name": "Emballage_du_produit",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Emballage_du_produit"
+          },
+          {
+            "name": "F34",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "F34"
+          },
+          {
+            "name": "F73",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "F73"
+          },
+          {
+            "name": "Kundensegment",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Kundensegment"
+          },
+          {
+            "name": "Mode_d'exp\u00e9dition",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Mode_d'exp\u00e9dition"
+          },
+          {
+            "name": "Modo_de_envio",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Modo_de_envio"
+          },
+          {
+            "name": "Modo_de_env\u00edo",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Modo_de_env\u00edo"
+          },
+          {
+            "name": "New_Year",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "New_Year",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Number_of_Records",
+            "dataType": "int64",
+            "isHidden": false,
+            "sourceColumn": "Number_of_Records",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Ordenar_prioridad",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Ordenar_prioridad"
+          },
+          {
+            "name": "Order_Date",
+            "dataType": "dateTime",
+            "isHidden": false,
+            "sourceColumn": "Order_Date"
+          },
+          {
+            "name": "Order_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Order_ID"
+          },
+          {
+            "name": "Order_Quantity",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Order_Quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Order_amount_percentile",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Order_amount_percentile",
+            "displayName": "Order amount rank",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Order_amount",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Order_amount",
+            "displayName": "Order Amount"
+          },
+          {
+            "name": "Order_number",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Order_number",
+            "displayName": "Order Number"
+          },
+          {
+            "name": "Postal_Code",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Postal_Code"
+          },
+          {
+            "name": "Prioridade_do_pedido",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Prioridade_do_pedido"
+          },
+          {
+            "name": "Priorit\u00e9_de_commande",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Priorit\u00e9_de_commande"
+          },
+          {
+            "name": "Product_Base_Margin",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Product_Base_Margin",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Product_Category",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product_Category",
+            "displayName": "Department"
+          },
+          {
+            "name": "Product_Container",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product_Container",
+            "displayName": "Container"
+          },
+          {
+            "name": "Product_Name",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product_Name",
+            "displayName": "Item"
+          },
+          {
+            "name": "Product_Sub_Category",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Product_Sub_Category",
+            "displayName": "Category"
+          },
+          {
+            "name": "Produkt_Subkategorie",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Produkt_Subkategorie"
+          },
+          {
+            "name": "Produktkategorie",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Produktkategorie"
+          },
+          {
+            "name": "Produktverpackung",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Produktverpackung"
+          },
+          {
+            "name": "Profit_factor",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Profit_factor",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Profit",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Profit",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Quantity_ordered_new",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Quantity_ordered_new",
+            "displayName": "Order Quantity ",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "RAND",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "RAND",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Row_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Row_ID"
+          },
+          {
+            "name": "Sales_factor",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Sales_factor",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Sales",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Sales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Segment_client",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Segment_client"
+          },
+          {
+            "name": "Segmento_de_cliente",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Segmento_de_cliente"
+          },
+          {
+            "name": "Segmento_do_cliente",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Segmento_do_cliente"
+          },
+          {
+            "name": "Ship_Date",
+            "dataType": "dateTime",
+            "isHidden": false,
+            "sourceColumn": "Ship_Date"
+          },
+          {
+            "name": "Shipping_Cost",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Shipping_Cost",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Sous_cat\u00e9gorie_de_produit",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Sous_cat\u00e9gorie_de_produit"
+          },
+          {
+            "name": "State_or_Province",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "State_or_Province",
+            "displayName": "State"
+          },
+          {
+            "name": "Subcategoria_do_produto",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Subcategoria_do_produto"
+          },
+          {
+            "name": "Subcategor\u00eda_de_producto",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Subcategor\u00eda_de_producto"
+          },
+          {
+            "name": "Supplier",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Supplier"
+          },
+          {
+            "name": "Unique_cust_loc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Unique_cust_loc"
+          },
+          {
+            "name": "Unit_Price",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Unit_Price",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Versandart",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Versandart"
+          },
+          {
+            "name": "Year_Month",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Year_Month",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Z_Calc_Order_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Z_Calc_Order_ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Z_City_Country",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Z_City_Country"
+          },
+          {
+            "name": "Z_Date_first_order",
+            "dataType": "dateTime",
+            "isHidden": false,
+            "sourceColumn": "Z_Date_first_order"
+          },
+          {
+            "name": "Z_Lookup_Order_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Z_Lookup_Order_ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Z_Order_ID",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Z_Order_ID",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Z_Order_amount_percentile",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "Z_Order_amount_percentile"
+          },
+          {
+            "name": "Z_Running_sales",
+            "dataType": "double",
+            "isHidden": false,
+            "sourceColumn": "Z_Running_sales",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "\u4ea7\u54c1\u5b50\u7c7b\u522b",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u4ea7\u54c1\u5b50\u7c7b\u522b"
+          },
+          {
+            "name": "\u4ea7\u54c1\u5bb9\u5668",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u4ea7\u54c1\u5bb9\u5668"
+          },
+          {
+            "name": "\u4ea7\u54c1\u7c7b\u522b",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u4ea7\u54c1\u7c7b\u522b"
+          },
+          {
+            "name": "\u51fa\u8377\u30e2\u30fc\u30c9",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u51fa\u8377\u30e2\u30fc\u30c9"
+          },
+          {
+            "name": "\u5ba2\u6237\u7ec6\u5206",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u5ba2\u6237\u7ec6\u5206"
+          },
+          {
+            "name": "\u6ce8\u6587\u306e\u512a\u5148\u5ea6",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u6ce8\u6587\u306e\u512a\u5148\u5ea6"
+          },
+          {
+            "name": "\u88c5\u8fd0\u6a21\u5f0f",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u88c5\u8fd0\u6a21\u5f0f"
+          },
+          {
+            "name": "\u88fd\u54c1\u30ab\u30c6\u30b4\u30ea\u30fc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u88fd\u54c1\u30ab\u30c6\u30b4\u30ea\u30fc"
+          },
+          {
+            "name": "\u88fd\u54c1\u30b3\u30f3\u30c6\u30ca\u30fc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u88fd\u54c1\u30b3\u30f3\u30c6\u30ca\u30fc"
+          },
+          {
+            "name": "\u88fd\u54c1\u30b5\u30d6\u30ab\u30c6\u30b4\u30ea\u30fc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u88fd\u54c1\u30b5\u30d6\u30ab\u30c6\u30b4\u30ea\u30fc"
+          },
+          {
+            "name": "\u8ba2\u5355\u4f18\u5148\u7ea7",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u8ba2\u5355\u4f18\u5148\u7ea7"
+          },
+          {
+            "name": "\u9867\u5ba2\u533a\u5206",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\u9867\u5ba2\u533a\u5206"
+          },
+          {
+            "name": "\uace0\uac1d_\uc138\uadf8\uba3c\ud2b8",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uace0\uac1d_\uc138\uadf8\uba3c\ud2b8"
+          },
+          {
+            "name": "\uc120\uc801_\ubaa8\ub4dc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uc120\uc801_\ubaa8\ub4dc"
+          },
+          {
+            "name": "\uc81c\ud488_\ubc94\uc8fc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uc81c\ud488_\ubc94\uc8fc"
+          },
+          {
+            "name": "\uc81c\ud488_\ucee8\ud14c\uc774\ub108",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uc81c\ud488_\ucee8\ud14c\uc774\ub108"
+          },
+          {
+            "name": "\uc81c\ud488_\ud558\uc704_\ubc94\uc8fc",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uc81c\ud488_\ud558\uc704_\ubc94\uc8fc"
+          },
+          {
+            "name": "\uc8fc\ubb38_\uc6b0\uc120_\uc21c\uc704",
+            "dataType": "string",
+            "isHidden": false,
+            "sourceColumn": "\uc8fc\ubb38_\uc6b0\uc120_\uc21c\uc704"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sample___Superstore___English_(Extract)_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sample___Superstore___English_(Extract)",
+        "columns": [
+          {
+            "name": "DefaultColumn",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DefaultColumn"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sample___Superstore___English_(Extract)_Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText(\"\", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(Source,{{\"Column1\", type text}})",
+                "in",
+                "    #\"Changed Type\""
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":false,\"IgnoreInferredProperties\":false,\"IgnoreTimestamps\":false,\"SplitMultilineStrings\":false,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Shared Expressions\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Groups\",\"Translations\"]}"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Sample___Superstore___English_(Extract)\", \"Sample___Superstore___English_(Extract)\"]"
+      }
+    ]
+  }
+}
