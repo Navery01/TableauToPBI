@@ -1,54 +1,95 @@
 # Manual Power BI Compilation Guide
 
-## When pbi-tools Fails Due to Version Compatibility
+## 🚨 Common Error: MissingMethodException
 
-If you're getting `System.MissingMethodException` errors when using pbi-tools, it's likely due to a version mismatch between pbi-tools and your Power BI Desktop installation.
+**Error Message:**
+```
+System.MissingMethodException: Method not found: 'Void Microsoft.PowerBI.Packaging.PowerBIPackager.Save
+```
 
-## Current Issue
-- **Power BI Desktop Version**: 2.144.1155.0 (June 2025)
-- **pbi-tools Version**: 1.2.0 (built for 2.138.782.0)
-- **Problem**: API methods have changed between versions
+**Cause:** Version mismatch between pbi-tools and Power BI Desktop. Your Power BI Desktop (2.144.1155.0) is newer than what your pbi-tools version supports.
 
-## Solutions
+## Your Specific Issue
+- **Power BI Desktop**: 2.144.1155.0 (June 2025)
+- **pbi-tools**: Likely version 1.x (built for older PBI versions)
+- **Problem**: The PowerBIPackager.Save method signature changed in newer Power BI Desktop versions
 
-### Option 1: Update pbi-tools (Recommended)
+## 📋 Manual Compilation Steps
+
+### Step 1: Locate Your Project Files
+After running the TableauToPBI converter, you'll have a project directory:
+```
+C:\Users\nvave\Documents\Projects\Python\TableauToPBI\output\helloworld_project\
+├── DataModelSchema/
+│   ├── Model.bim
+│   ├── connections.json
+│   └── DiagramLayout
+├── Report/
+│   ├── Layout
+│   └── StaticResources.json
+├── Version.txt
+├── Metadata
+├── Settings
+├── ReportMetadata.json
+├── SecurityBindings.json
+└── ReportSettings.json
+```
+
+### Step 2: Open in Power BI Desktop
+
+1. **Launch Power BI Desktop**
+   - Start → Power BI Desktop
+
+2. **Open the Project Folder**
+   - **File** → **Open**
+   - Navigate to: `C:\Users\nvave\Documents\Projects\Python\TableauToPBI\output\helloworld_project\`
+   - **Select the entire folder**, not individual files
+   - Click **Open**
+
+### Step 3: Export as Template
+
+1. **File** → **Export** → **Power BI Template (.pbit)**
+2. **Save as:** `C:\Users\nvave\Documents\Projects\Python\TableauToPBI\output\helloworld.pbit`
+3. **Add description** if desired
+4. Click **OK**
+
+## 🔄 Alternative: Update pbi-tools
+
+Try updating pbi-tools to latest version:
 
 ```bash
-# Update via Chocolatey
+# Using the auto-installer
+python tableau_to_powerbi.py pbi-tools update
+
+# Or manual update via Chocolatey
 choco upgrade pbi-tools
 
-# Or check for latest release
-# Visit: https://github.com/pbi-tools/pbi-tools/releases
+# Or download latest from GitHub
+# https://github.com/pbi-tools/pbi-tools/releases
 ```
 
-### Option 2: Use Project Files Manually
+## 🔧 Troubleshooting
 
-If pbi-tools still fails, you can use the generated project files manually:
+### Cannot Open Project Folder
+- Ensure all required files are present
+- Try opening `DataModelSchema/Model.bim` directly
 
-1. **Locate Project Files**: Find the `{filename}_project` folder in your output directory
-2. **Open Power BI Desktop**: Launch Power BI Desktop
-3. **Import from Folder**: 
-   - File → Import → Power BI project folder
-   - Select the project folder created by the converter
-4. **Save as Template**: File → Export → Power BI Template (.pbit)
+### Data Connection Issues
+- **Transform Data** → **Data Source Settings**
+- Update connections to point to actual data sources
 
-### Option 3: Use Alternative Compilation Method
+### Invalid Model Errors
+- Check `Model.bim` is valid JSON
+- Re-run converter if file is corrupted
 
-Create a PowerShell script to use Power BI Desktop directly:
+## 💡 Success Tips
 
-```powershell
-# save_as_pbit.ps1
-param(
-    [string]$ProjectPath,
-    [string]$OutputPath
-)
+1. **Always use the latest Power BI Desktop**
+2. **Keep pbi-tools updated**
+3. **Manual compilation is often more reliable**
+4. **Test with simple workbooks first**
 
-# Start Power BI Desktop with the project
-$pbiPath = "C:\Program Files\WindowsApps\Microsoft.MicrosoftPowerBIDesktop_*\bin\PBIDesktop.exe"
-$actualPath = Get-ChildItem $pbiPath | Sort-Object LastWriteTime -Desc | Select-Object -First 1
-
-& $actualPath.FullName $ProjectPath
-```
+This approach will get you a working `.pbit` file despite the version compatibility issues!
 
 ### Option 4: Downgrade Power BI Desktop
 
