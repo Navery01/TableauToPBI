@@ -46,34 +46,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     
     def _check_prerequisites(self):
         """Check and display prerequisite status"""
-        self.log_message("Checking prerequisites...")
-        
-        # Check pbi-tools availability
-        try:
-            if PBIToolsCompiler.is_pbi_tools_available():
-                self.log_message("✅ pbi-tools is available")
+        pass
+
                 
-                # Check for version compatibility
-                from tableau_to_powerbi import handle_pbi_tools_compatibility
-                compatibility = handle_pbi_tools_compatibility()
-                
-                if "warning" in compatibility:
-                    self.log_message("⚠️  WARNING: Version compatibility issue detected")
-                    self.log_message(f"   {compatibility['warning']}")
-                    self.log_message("   Project files will be created successfully")
-                    self.log_message("   Manual .pbit compilation may be required")
-                else:
-                    self.log_message("✅ pbi-tools version compatibility looks good")
-            else:
-                self.log_message("⚠️  pbi-tools not found - Only project files will be generated")
-                self.log_message("   Install pbi-tools for complete .pbit generation")
-                self.log_message("   Project files can be manually compiled in Power BI Desktop")
-        except Exception as e:
-            self.log_message(f"❌ Error checking pbi-tools: {e}")
-        
-        self.log_message("Ready to convert Tableau files!")
-        self.log_message("📋 Manual compilation guide available in MANUAL_COMPILATION_GUIDE.md")
-    
+
     def _initialize_widgets(self):
         """Initialize and connect UI widgets"""
         # Set up the file list view model

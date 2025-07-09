@@ -13,7 +13,7 @@ import zipfile
 import os
 import xml.etree.ElementTree as ET
 import json
-import subprocess
+import subprocess 
 import tempfile
 import shutil
 from pathlib import Path
@@ -657,52 +657,8 @@ class PBIToolsCompiler:
         # Check for version compatibility
         compatibility = handle_pbi_tools_compatibility()
         
-        if not compatibility.get("compatible", True):
-            logger.error(f"❌ COMPATIBILITY ERROR: {compatibility.get('warning', 'Unknown compatibility issue')}")
-            logger.error("🔧 SOLUTIONS:")
-            logger.error("   1. Update pbi-tools to latest version")
-            logger.error("   2. Use project files manually with Power BI Desktop")
-            logger.error("   3. Use alternative compilation method")
-            
-            # Offer immediate solutions
-            try:
-                logger.info("\n🔄 Available options:")
-                logger.info("   [1] Try updating pbi-tools automatically")
-                logger.info("   [2] Use manual compilation (recommended)")
-                logger.info("   [3] Continue anyway (may fail)")
-                
-                choice = input("Choose option (1/2/3): ").strip()
-                
-                if choice == '1':
-                    logger.info("🔄 Updating pbi-tools...")
-                    if self.installer.install_or_update(force_reinstall=True):
-                        logger.info("🔄 Retrying compilation...")
-                        return self.compile_to_pbit(project_dir, output_path, overwrite)
-                    else:
-                        logger.error("❌ Update failed")
-                        return False
-                
-                elif choice == '2':
-                    logger.info("📋 MANUAL COMPILATION INSTRUCTIONS:")
-                    logger.info("   1. Open Power BI Desktop")
-                    logger.info("   2. File → Open → Browse to:")
-                    logger.info(f"      {project_dir}")
-                    logger.info("   3. File → Export → Power BI Template (.pbit)")
-                    logger.info(f"   4. Save as: {output_path}")
-                    logger.info("   5. See PBI_TOOLS_GUIDE.md for detailed steps")
-                    return True  # Consider manual compilation as success
-                
-                elif choice == '3':
-                    logger.warning("⚠️  Proceeding despite compatibility issues...")
-                else:
-                    logger.info("❌ Compilation cancelled")
-                    return False
-                    
-            except (EOFError, KeyboardInterrupt):
-                logger.info("❌ Compilation cancelled")
-                return False
         
-        elif compatibility.get("warning"):
+        if compatibility.get("warning"):
             logger.warning(f"⚠️  {compatibility['warning']}")
             logger.warning("   Compilation may fail due to version mismatch")
         
@@ -710,7 +666,7 @@ class PBIToolsCompiler:
         
         try:
             result = subprocess.run([
-                "pbi-tools", "compile",
+                "pbi-tools.core", "compile",
                 project_dir,
                 output_path,
                 "PBIT",
@@ -754,6 +710,20 @@ class PBIToolsCompiler:
             
             for msg in error_messages:
                 logger.error(msg)
+                
+        except Exception as e:
+            logger.error("❌ Error creating .pbit:")
+            logger.error(f"Error: {str(e)}")
+            
+            # Generic error handling for non-subprocess errors
+            error_messages = [
+                "🔧 UNEXPECTED ERROR:",
+                "   An unexpected error occurred during .pbit creation",
+                "   This may be due to file permissions, disk space, or other system issues"
+            ]
+            
+            for msg in error_messages:
+                logger.error(msg)
             
             logger.error("\n💡 RECOMMENDED SOLUTIONS:")
             logger.error("   1. Use manual compilation (most reliable):")
@@ -763,24 +733,20 @@ class PBIToolsCompiler:
             logger.error("   2. Update both pbi-tools and Power BI Desktop")
             logger.error("   3. Check GitHub issues: https://github.com/pbi-tools/pbi-tools/issues")
             
-            # Offer to open project directory
+            # Auto-open project directory for manual compilation
+            logger.info("📂 Opening project directory for manual compilation...")
             try:
-                open_choice = input("\nWould you like to open the project directory for manual compilation? (y/n): ").lower().strip()
-                if open_choice == 'y':
-                    import subprocess
-                    import platform
-                    
-                    if platform.system() == "Windows":
-                        subprocess.run(["explorer", project_dir])
-                    elif platform.system() == "Darwin":  # macOS
-                        subprocess.run(["open", project_dir])
-                    else:  # Linux
-                        subprocess.run(["xdg-open", project_dir])
-                    
-                    logger.info(f"📂 Opened project directory: {project_dir}")
-                    
-            except (EOFError, KeyboardInterrupt):
-                pass
+                if platform.system() == "Windows":
+                    subprocess.run(["explorer", project_dir])
+                elif platform.system() == "Darwin":  # macOS
+                    subprocess.run(["open", project_dir])
+                else:  # Linux
+                    subprocess.run(["xdg-open", project_dir])
+                
+                logger.info(f"📂 Opened project directory: {project_dir}")
+            except Exception as e:
+                logger.warning(f"⚠️  Could not open project directory: {e}")
+                logger.info(f"📂 Manual path: {project_dir}")
                 
             return False
 
@@ -1051,14 +1017,8 @@ class PBIToolsInstaller:
                 
                 logger.info(f"🔄 Update available: {current_version} → {latest_version}")
                 if not force_reinstall:
-                    try:
-                        choice = input("Would you like to update? (y/n): ").lower().strip()
-                        if choice != 'y':
-                            logger.info("⏭️  Update skipped")
-                            return True
-                    except (EOFError, KeyboardInterrupt):
-                        logger.info("⏭️  Update skipped")
-                        return True
+                    # Auto-proceed with update
+                    logger.info("🔄 Auto-proceeding with update...")
             
             # Perform installation/update
             logger.info(f"🚀 Installing pbi-tools {latest_version}...")
@@ -2207,17 +2167,14 @@ class EnhancedPBIToolsCompiler(PBIToolsCompiler):
         if alt_compilers.create_pbit_manually():
             return True
         
-        # Method 4: Power BI Desktop automation (interactive)
-        logger.info("🔧 Method 4: Power BI Desktop automation (requires manual steps)...")
-        logger.info("💡 This method requires user interaction")
+        # Method 4: Power BI Desktop automation (auto-run)
+        logger.info("🔧 Method 4: Trying Power BI Desktop automation...")
+        logger.info("💡 This method will open Power BI Desktop automatically")
         
-        try:
-            choice = input("Would you like to try Power BI Desktop automation? (y/n): ").lower().strip()
-            if choice == 'y':
-                if alt_compilers.compile_with_power_bi_desktop():
-                    return True
-        except (EOFError, KeyboardInterrupt):
-            logger.info("⏭️  Skipping Power BI Desktop automation")
+        # Auto-try Power BI Desktop automation
+        if alt_compilers.compile_with_power_bi_desktop():
+            logger.info("✅ Power BI Desktop automation started successfully!")
+            return True
         
         # All methods failed
         logger.error("❌ All compilation methods failed")
