@@ -19,9 +19,6 @@ import shutil
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 import logging
-import requests
-import platform
-import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -593,31 +590,6 @@ class PowerBIProjectWriter:
 class PBIToolsCompiler:
     """Handles compilation of Power BI project files using pbi-tools."""
     
-    def __init__(self, auto_install: bool = True):
-        """
-        Initialize the compiler.
-        
-        Args:
-            auto_install: Whether to automatically install pbi-tools if not found
-        """
-        self.auto_install = auto_install
-        self.installer = PBIToolsInstaller()
-    
-    def ensure_pbi_tools_available(self) -> bool:
-        """Ensure pbi-tools is available, installing if necessary."""
-        installation_info = self.installer.check_installation()
-        
-        if installation_info["installed"]:
-            logger.info(f"✅ pbi-tools found: {installation_info['version']}")
-            return True
-        
-        if not self.auto_install:
-            logger.error("❌ pbi-tools not found and auto-install is disabled")
-            return False
-        
-        logger.info("🔧 pbi-tools not found. Starting auto-installation...")
-        return self.installer.install_or_update()
-    
     @staticmethod
     def is_pbi_tools_available() -> bool:
         """Check if pbi-tools is available in the system."""
@@ -634,7 +606,8 @@ class PBIToolsCompiler:
             # If any other exception occurs, assume it's not available
             return False
     
-    def compile_to_pbit(self, project_dir: str, output_path: str, overwrite: bool = True) -> bool:
+    @staticmethod
+    def compile_to_pbit(project_dir: str, output_path: str, overwrite: bool = True) -> bool:
         """
         Compile Power BI project to .pbit file using pbi-tools.
         
@@ -646,21 +619,24 @@ class PBIToolsCompiler:
         Returns:
             True if compilation successful, False otherwise
         """
-        # Ensure pbi-tools is available (auto-install if needed)
-        if not self.ensure_pbi_tools_available():
-            logger.error("❌ pbi-tools is not available and could not be installed")
-            logger.error("   Manual installation options:")
+        if not PBIToolsCompiler.is_pbi_tools_available():
+            logger.error("❌ pbi-tools not found. Please install it first:")
             logger.error("   Option 1: choco install pbi-tools")
             logger.error("   Option 2: Download from https://github.com/pbi-tools/pbi-tools/releases")
             return False
         
         # Check for version compatibility
         compatibility = handle_pbi_tools_compatibility()
+<<<<<<< HEAD
         
         
         if compatibility.get("warning"):
+=======
+        if "warning" in compatibility:
+>>>>>>> parent of 20eec4b (AttemptingCompatabilityFix)
             logger.warning(f"⚠️  {compatibility['warning']}")
             logger.warning("   Compilation may fail due to version mismatch")
+            logger.warning("   Consider updating pbi-tools or using project files manually")
         
         logger.info("🏗️  Compiling .pbit using pbi-tools...")
         
@@ -681,6 +657,7 @@ class PBIToolsCompiler:
             logger.error(f"STDOUT: {e.stdout}")
             logger.error(f"STDERR: {e.stderr}")
             
+<<<<<<< HEAD
             # Enhanced error detection and handling
             error_messages = []
             
@@ -747,10 +724,21 @@ class PBIToolsCompiler:
             except Exception as e:
                 logger.warning(f"⚠️  Could not open project directory: {e}")
                 logger.info(f"📂 Manual path: {project_dir}")
+=======
+            # Check for specific version compatibility errors
+            if "MissingMethodException" in e.stderr or "Method not found" in e.stderr:
+                logger.error("🔧 This appears to be a version compatibility issue:")
+                logger.error("   Your Power BI Desktop version may be incompatible with pbi-tools")
+                logger.error("   Solutions:")
+                logger.error("   1. Update pbi-tools: choco upgrade pbi-tools")
+                logger.error("   2. Use project files manually with Power BI Desktop")
+                logger.error("   3. Downgrade Power BI Desktop to a compatible version")
+>>>>>>> parent of 20eec4b (AttemptingCompatabilityFix)
                 
             return False
 
 
+<<<<<<< HEAD
 class PBIToolsInstaller:
     """Handles automatic installation and updates of pbi-tools."""
     
@@ -1068,21 +1056,22 @@ def auto_install_pbi_tools(force_reinstall: bool = False) -> bool:
     return installer.install_or_update(force_reinstall)
 
 
+=======
+>>>>>>> parent of 20eec4b (AttemptingCompatabilityFix)
 class TableauToPowerBIConverter:
     """Main converter class that orchestrates the conversion process."""
     
-    def __init__(self, temp_dir: Optional[str] = None, auto_install_pbi_tools: bool = True):
+    def __init__(self, temp_dir: Optional[str] = None):
         """
         Initialize the converter.
         
         Args:
             temp_dir: Temporary directory for intermediate files (auto-created if None)
-            auto_install_pbi_tools: Whether to automatically install pbi-tools if not found
         """
         self.temp_dir = temp_dir or tempfile.mkdtemp(prefix="tb2pbi_")
         self.extractor = TableauExtractor()
         self.converter = PowerBIConverter()
-        self.compiler = PBIToolsCompiler(auto_install=auto_install_pbi_tools)
+        self.compiler = PBIToolsCompiler()
     
     def convert(self, 
                 twbx_path: str, 
@@ -1179,8 +1168,7 @@ class TableauToPowerBIConverter:
 # Convenience functions for direct usage
 def convert_tableau_to_powerbi(twbx_path: str, 
                               output_path: str, 
-                              project_dir: Optional[str] = None,
-                              auto_install_pbi_tools: bool = True) -> bool:
+                              project_dir: Optional[str] = None) -> bool:
     """
     Convert a Tableau workbook to Power BI template (convenience function).
     
@@ -1188,12 +1176,11 @@ def convert_tableau_to_powerbi(twbx_path: str,
         twbx_path: Path to the Tableau workbook (.twbx)
         output_path: Path for the output Power BI template (.pbit)
         project_dir: Directory for intermediate project files (optional)
-        auto_install_pbi_tools: Whether to automatically install pbi-tools if needed
         
     Returns:
         True if conversion successful, False otherwise
     """
-    converter = TableauToPowerBIConverter(auto_install_pbi_tools=auto_install_pbi_tools)
+    converter = TableauToPowerBIConverter()
     return converter.convert(twbx_path, output_path, project_dir)
 
 
@@ -1228,45 +1215,12 @@ def handle_pbi_tools_compatibility():
             pbi_installs = info.get("pbiInstalls", [])
             if pbi_installs:
                 current_pbi_version = pbi_installs[0].get("ProductVersion", "unknown")
-                
-                # Parse version numbers for comparison
-                def parse_version(version_str):
-                    try:
-                        # Extract major.minor.build from version string
-                        parts = version_str.split('.')
-                        return tuple(int(x) for x in parts[:3])
-                    except:
-                        return (0, 0, 0)
-                
-                expected_version = parse_version(pbi_build_version)
-                actual_version = parse_version(current_pbi_version)
-                
-                # Check for known incompatible combinations
-                is_compatible = True
-                warning_message = None
-                
-                # Your specific case: PBI Desktop 2.144.1155.0 with older pbi-tools
-                if actual_version >= (2, 144, 0) and pbi_tools_version.startswith("1."):
-                    is_compatible = False
-                    warning_message = (
-                        f"INCOMPATIBLE: Power BI Desktop {current_pbi_version} requires pbi-tools 2.x+, "
-                        f"but you have pbi-tools {pbi_tools_version}. "
-                        "The 'PowerBIPackager.Save' method signature changed in newer PBI versions."
-                    )
-                elif expected_version != actual_version:
-                    warning_message = (
-                        f"Version mismatch: pbi-tools expects {pbi_build_version}, "
-                        f"found {current_pbi_version}. This may cause compilation issues."
-                    )
-                
                 return {
-                    "compatible": is_compatible,
+                    "compatible": True,  # We'll try anyway
                     "pbi_tools_version": pbi_tools_version,
                     "pbi_build_version": pbi_build_version,
                     "current_pbi_version": current_pbi_version,
-                    "warning": warning_message,
-                    "expected_version": expected_version,
-                    "actual_version": actual_version
+                    "warning": f"Version mismatch detected: pbi-tools expects {pbi_build_version}, found {current_pbi_version}"
                 }
             
         return {"compatible": False, "error": "Could not determine versions"}
@@ -1276,176 +1230,17 @@ def handle_pbi_tools_compatibility():
 
 
 if __name__ == "__main__":
-    # Enhanced CLI with pbi-tools management
-    import argparse
+    # Example usage
+    import sys
     
-    parser = argparse.ArgumentParser(description='Tableau to Power BI Converter')
-    
-    subparsers = parser.add_subparsers(dest='command', help='Available commands')
-    
-    # Convert command
-    convert_parser = subparsers.add_parser('convert', help='Convert Tableau workbook to Power BI')
-    convert_parser.add_argument('input', help='Input Tableau file (.twbx)')
-    convert_parser.add_argument('output', help='Output Power BI file (.pbit)')
-    convert_parser.add_argument('--project-dir', help='Directory for intermediate project files')
-    convert_parser.add_argument('--no-auto-install', action='store_true', 
-                               help='Disable automatic pbi-tools installation')
-    
-    # Analyze command
-    analyze_parser = subparsers.add_parser('analyze', help='Analyze Tableau workbook structure')
-    analyze_parser.add_argument('input', help='Input Tableau file (.twbx)')
-    analyze_parser.add_argument('--output', help='Output JSON file for analysis results')
-    
-    # pbi-tools management commands
-    pbi_parser = subparsers.add_parser('pbi-tools', help='Manage pbi-tools installation')
-    pbi_subparsers = pbi_parser.add_subparsers(dest='pbi_command', help='pbi-tools commands')
-    
-    pbi_subparsers.add_parser('install', help='Install pbi-tools')
-    pbi_subparsers.add_parser('update', help='Update pbi-tools to latest version')
-    pbi_subparsers.add_parser('status', help='Check pbi-tools installation status')
-    pbi_subparsers.add_parser('uninstall', help='Uninstall pbi-tools')
-    
-    # Force reinstall option
-    install_parser = pbi_subparsers.add_parser('reinstall', help='Force reinstall pbi-tools')
-    
-    args = parser.parse_args()
-    
-    if not args.command:
-        # Default behavior for backward compatibility
-        if len(sys.argv) >= 3:
-            input_file = sys.argv[1]
-            output_file = sys.argv[2]
-            success = convert_tableau_to_powerbi(input_file, output_file)
-            sys.exit(0 if success else 1)
-        else:
-            parser.print_help()
-            sys.exit(1)
-    
-    elif args.command == 'convert':
-        auto_install = not args.no_auto_install
-        success = convert_tableau_to_powerbi(
-            args.input, 
-            args.output, 
-            args.project_dir,
-            auto_install_pbi_tools=auto_install
-        )
-        sys.exit(0 if success else 1)
-    
-    elif args.command == 'analyze':
-        try:
-            analysis = analyze_tableau_workbook(args.input)
-            
-            if args.output:
-                with open(args.output, 'w', encoding='utf-8') as f:
-                    json.dump(analysis, f, indent=2)
-                print(f"✅ Analysis saved to: {args.output}")
-            else:
-                print(json.dumps(analysis, indent=2))
-            
-        except Exception as e:
-            print(f"❌ Analysis failed: {e}")
-            sys.exit(1)
-    
-    elif args.command == 'pbi-tools':
-        installer = PBIToolsInstaller()
-        
-        if args.pbi_command == 'install':
-            success = installer.install_or_update()
-            sys.exit(0 if success else 1)
-        
-        elif args.pbi_command == 'update':
-            success = installer.install_or_update()
-            sys.exit(0 if success else 1)
-        
-        elif args.pbi_command == 'reinstall':
-            success = installer.install_or_update(force_reinstall=True)
-            sys.exit(0 if success else 1)
-        
-        elif args.pbi_command == 'status':
-            install_info = installer.check_installation()
-            if install_info["installed"]:
-                print(f"✅ pbi-tools is installed")
-                print(f"   Version: {install_info['version']}")
-                print(f"   Path: {install_info['path']}")
-                
-                # Check for updates
-                latest_info = installer.get_latest_version_info()
-                if latest_info and latest_info.get("version"):
-                    if install_info["version"] != latest_info["version"]:
-                        print(f"🆕 Update available: {install_info['version']} → {latest_info['version']}")
-                    else:
-                        print("✅ Up to date")
-            else:
-                print("❌ pbi-tools is not installed")
-                print("💡 Run 'python tableau_to_powerbi.py pbi-tools install' to install")
-        
-        elif args.pbi_command == 'uninstall':
-            success = installer.uninstall()
-            sys.exit(0 if success else 1)
-        
-        else:
-            pbi_parser.print_help()
-            sys.exit(1)
-    
-    else:
-        parser.print_help()
+    if len(sys.argv) < 3:
+        print("Usage: python tableau_to_powerbi.py <input.twbx> <output.pbit>")
         sys.exit(1)
-
-class AlternativeCompilers:
-    """Alternative compilation methods that don't require pbi-tools."""
     
-    def __init__(self, project_dir: str, output_path: str):
-        self.project_dir = Path(project_dir)
-        self.output_path = Path(output_path)
-        self.temp_dir = Path("temp_compilation")
-        self.temp_dir.mkdir(exist_ok=True)
-        
-    def compile_with_tabular_editor(self) -> bool:
-        """
-        Use Tabular Editor to compile the model.
-        Tabular Editor can work with .bim files directly.
-        """
-        logger.info("🔧 Attempting compilation with Tabular Editor...")
-        
-        # Check for Tabular Editor 2 (free version) and 3 (paid version)
-        tabular_paths = [
-            # Tabular Editor 2 (free)
-            r"C:\Program Files (x86)\Tabular Editor\TabularEditor.exe",
-            r"C:\Program Files\Tabular Editor\TabularEditor.exe",
-            r"C:\Users\{}\AppData\Local\TabularEditor\TabularEditor.exe".format(os.environ.get('USERNAME', '')),
-            # Tabular Editor 3 (paid)
-            r"C:\Program Files\Tabular Editor 3\TabularEditor3.exe",
-            r"C:\Program Files (x86)\Tabular Editor 3\TabularEditor3.exe",
-            # Portable versions
-            r".\TabularEditor.exe",
-            r".\TabularEditor3.exe"
-        ]
-        
-        tabular_exe = None
-        for path in tabular_paths:
-            if Path(path).exists():
-                tabular_exe = path
-                break
-        
-        if not tabular_exe:
-            logger.warning("❌ Tabular Editor not found")
-            logger.info("💡 Install Tabular Editor 2 (free) from: https://tabulareditor.com/")
-            logger.info("💡 Or download portable version to current directory")
-            return False
-        
-        try:
-            bim_file = self.project_dir / "DataModelSchema" / "Model.bim"
-            if not bim_file.exists():
-                logger.error(f"❌ Model.bim not found at {bim_file}")
-                return False
-            
-            # Create a comprehensive script for Tabular Editor
-            script_content = f'''
-// Tabular Editor C# script for PBIT compilation
-try {{
-    // Load the model
-    Model.Database.Name = "{self.output_path.stem}";
+    input_file = sys.argv[1]
+    output_file = sys.argv[2]
     
+<<<<<<< HEAD
     // Validate the model
     if (Model.Tables.Count == 0) {{
         Warning("Model has no tables");
@@ -2185,3 +1980,7 @@ class EnhancedPBIToolsCompiler(PBIToolsCompiler):
         logger.error(f"   4. Save as: {output_path}")
         
         return False
+=======
+    success = convert_tableau_to_powerbi(input_file, output_file)
+    sys.exit(0 if success else 1)
+>>>>>>> parent of 20eec4b (AttemptingCompatabilityFix)
