@@ -623,7 +623,6 @@ class PBIToolsCompiler:
             logger.error("❌ pbi-tools not found. Please install it first:")
             logger.error("   Option 1: choco install pbi-tools")
             logger.error("   Option 2: Download from https://github.com/pbi-tools/pbi-tools/releases")
-            return False
         
         # Check for version compatibility
         compatibility = handle_pbi_tools_compatibility()
@@ -635,12 +634,18 @@ class PBIToolsCompiler:
         logger.info("🏗️  Compiling .pbit using pbi-tools...")
         
         try:
-            result = subprocess.run([
-                "pbi-tools.core", "compile",
+            print(f'📁 Output path: {output_path}')
+            print(f'📂 project_dir: {project_dir}')
+
+            print("Running pbi-tools compile command...")
+            print(f'Command: pbi-tools\\pbi-tools.core.exe compile {project_dir} {output_path} PBIT -overwrite')
+
+            subprocess.run([
+                os.path.join("pbi-tools", "pbi-tools.core.exe"), "compile",
                 project_dir,
                 output_path,
                 "PBIT",
-                str(overwrite)
+                '-overwrite'
             ], capture_output=True, text=True, check=True)
             
             logger.info(f"✅ .pbit created at: {output_path}")
@@ -719,7 +724,8 @@ class TableauToPowerBIConverter:
             # Step 4: Compile to .pbit
             logger.info("🔨 Compiling to .pbit...")
             success = self.compiler.compile_to_pbit(project_path, output_path)
-            
+            logger.info(f"📂 Project files written to: {project_path}")
+
             if success:
                 logger.info("🎉 Conversion completed successfully!")
                 logger.info(f"📁 Output file: {output_path}")
@@ -734,12 +740,7 @@ class TableauToPowerBIConverter:
                 logger.info("   4. See MANUAL_COMPILATION_GUIDE.md for detailed steps")
                 # Still return success since project files were created
                 success = True
-            
-            # Cleanup
-            if cleanup_temp and extracted_dir.startswith(tempfile.gettempdir()):
-                shutil.rmtree(extracted_dir, ignore_errors=True)
-            
-            return success
+
             
         except Exception as e:
             logger.error(f"❌ Conversion failed: {e}")
